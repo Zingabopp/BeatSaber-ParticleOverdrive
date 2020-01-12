@@ -16,7 +16,7 @@ namespace ParticleOverdrive
     {
         public string Name => "Particle Overdive";
         public string Version => "1.0.0";
-        IPA.Logging.Logger log;
+        internal static IPA.Logging.Logger log;
 
         private static readonly string[] env = { "Init", "MenuViewControllers", "GameCore", "Credits" };
 
@@ -28,6 +28,8 @@ namespace ParticleOverdrive
 
         internal static RefGetter<NoteCutParticlesEffect, ParticleSystem> GetExplosionPS;
         internal static RefGetter<NoteCutParticlesEffect, ParticleSystem[]> GetSparklesPS;
+        internal static RefGetter<NoteCutParticlesEffect, ParticleSystem.EmitParams[]> GetSparklesEmitParams;
+        internal static RefGetter<NoteCutParticlesEffect, ParticleSystem.EmitParams> GetExplosionEmitParams;
         internal static RefGetter<BlueNoiseDitheringUpdater, BlueNoiseDithering> GetBlueNoiseDithering;
         internal static RefGetter<BlueNoiseDithering, Texture2D> GetNoiseTexture;
         #endregion
@@ -78,6 +80,8 @@ namespace ParticleOverdrive
             {
                 GetExplosionPS = Utilities.CreateRefGetter<NoteCutParticlesEffect, ParticleSystem>("_explosionPS");
                 GetSparklesPS = Utilities.CreateRefGetter<NoteCutParticlesEffect, ParticleSystem[]>("_sparklesPS");
+                GetSparklesEmitParams = Utilities.CreateRefGetter<NoteCutParticlesEffect, ParticleSystem.EmitParams[]>("_sparklesPSEmitParams");
+                GetExplosionEmitParams = Utilities.CreateRefGetter<NoteCutParticlesEffect, ParticleSystem.EmitParams>("_explosionPSEmitParams");
                 SlashExplosionParticlesEnabled = true;
                 try
                 {
